@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import stamp from "../../../assets/stamp_fables.png";
 import { fables } from "../../../data/forest/fables.js";
 import SectionGrid from "../../../components/forest/SectionGrid.jsx";
-import ForestCardLite from "../../../components/forest/ForestCardLite.jsx";
+import ForestCardLite2 from "../../../components/forest/ForestCardLite2.jsx";
 
 // function shuffle(arr) {
 //   const a = [...arr];
@@ -117,7 +117,7 @@ export default function FablesIndex() {
           sections={sections}
           gridClassName="grid-cols-1 lg:grid-cols-2"
           renderCard={(item) => (
-            <ForestCardLite
+            <ForestCardLite2
               to={`/${item.section}/${item.slug}`}
               title={item.title}
               description={item.excerpt ?? item.summary ?? item.description ?? ""}
@@ -137,7 +137,7 @@ export default function FablesIndex() {
                   </>
                 ) : null}
               </div>
-            </ForestCardLite>
+            </ForestCardLite2>
           )}
         />
       </div>
@@ -152,7 +152,7 @@ function Header({ emoji, title, desc, stamp }) {
     <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
       <div className="min-w-0 space-y-2">
         <div className="flex items-center gap-2 text-white/85">
-          <span className="text-xl" aria-hidden="true">{emoji}</span>
+          <span className="text-2xl" aria-hidden="true">{emoji}</span>
           <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h1>
         </div>
         <p className="max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">{desc}</p>

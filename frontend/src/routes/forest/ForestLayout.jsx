@@ -101,16 +101,20 @@ export default function ForestLayout() {
                 aria-label="Cognitive Forest"
                 className={cx(
                   "group inline-flex items-center justify-center",
-                  "h-16 w-16 rounded-2xl",
-                  styles.shell,
-                  "transition hover:ring-white/20 hover:bg-black/70",
-                  "hover:shadow-[0_14px_60px_rgba(255,255,255,0.06)]"
+  "h-16 w-16 rounded-2xl",
+  "bg-transparent",
+  "transition"
                 )}
               >
                 <img
                   src={forestLogo}
                   alt="Cognitive Forest"
-                  className="h-16 w-16 object-contain transition group-hover:scale-[1.24]"
+                  className={cx(
+    "h-14 w-14 object-contain transition",
+    "group-hover:scale-[1.24]",
+    "drop-shadow-[0_0_10px_rgba(34,211,238,0.85)]",
+    "group-hover:drop-shadow-[0_0_18px_rgba(34,211,238,0.95)]"
+  )}
                   draggable="false"
                 />
               </Link>
