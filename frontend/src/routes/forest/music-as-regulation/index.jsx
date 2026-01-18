@@ -149,7 +149,7 @@ function Header({ emoji, title, desc, stamp }) {
         <p className="max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">{desc}</p>
       </div>
 
-      <div className="relative w-full max-w-[320px] shrink-0 overflow-hidden rounded-3xl bg-black/70 ring-1 ring-white/10 sm:mt-1">
+      <div className="relative w-full max-w-[320px] shrink-0 overflow-hidden rounded-3xl bg-black/70 ring-1 ring-white/10 sm:mt-1 mx-auto sm:mx-0">
         <div className="absolute inset-0 bg-gradient-to-l from-black/45 via-black/10 to-transparent" />
         <img src={stamp} alt="" className="relative h-44 w-full object-contain p-5 opacity-90" draggable="false" />
       </div>

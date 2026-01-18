@@ -6,16 +6,17 @@ export default function Footer() {
   return (
     <footer className="relative z-20 mt-2 border-t border-white/15 bg-black/60 backdrop-blur-md shadow-[0_-10px_40px_rgba(0,0,0,0.45)]">
       <div className="mx-auto w-full max-w-screen-2xl px-2 py-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center justify-between gap-6">
           {/* Left */}
-          <p className="text-sm text-white/60">
-            © {year} <span className="text-white/80">Polymathic Trail</span>. All rights reserved.
+          <p className="text-sm text-white/60 whitespace-nowrap">
+            © {year} <span className="text-white/80">Polymathic Trail</span>. 
+            <span className="hidden sm:inline"> All rights reserved.</span>
           </p>
 
           {/* Right */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 whitespace-nowrap">
   <SocialIcon
-    href="#"
+    href="https://github.com/ARCynic"
     label="GitHub"
     icon={
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
@@ -50,7 +51,7 @@ export default function Footer() {
     }
   />
 
-  {/* YouTube */}
+  {/* YouTube
   <SocialIcon
     href="#"
     label="YouTube"
@@ -59,7 +60,7 @@ export default function Footer() {
         <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.6 4.6 12 4.6 12 4.6s-5.6 0-7.5.5A3 3 0 0 0 2.4 7.2 31.4 31.4 0 0 0 2 12a31.4 31.4 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.9.5 7.5.5 7.5.5s5.6 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 22 12a31.4 31.4 0 0 0-.4-4.8ZM10.2 15.2V8.8L15.8 12l-5.6 3.2Z" />
       </svg>
     }
-  />
+  /> */}
 
   {/* Instagram */}
   <SocialIcon

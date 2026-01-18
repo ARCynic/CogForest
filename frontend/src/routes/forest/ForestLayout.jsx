@@ -7,7 +7,7 @@ import { FOREST_VISUALS, FOREST_VISUALS_DEFAULT } from "../../data/forest/visual
 import bgForest from "../../assets/bg_forest.png";
 import forestLogo from "../../assets/logo_forest.png";
 import ScrollToTop from "./ScrolltoTop.jsx";
-
+import CatalogueFab from "../../components/forest/CatalogueFab.jsx";
 const cx = (...classes) => classes.filter(Boolean).join(" ");
 
 export default function ForestLayout() {
@@ -22,12 +22,21 @@ export default function ForestLayout() {
     return () => clearTimeout(t);
   }, [location.pathname]);
 
-  const styles = {
-    shell: "bg-black/60 ring-1 ring-white/10 backdrop-blur",
-    pillBase: "bg-white/5 text-white ring-1 ring-white/10",
-    pillHover: "hover:bg-cyan-300 hover:text-black hover:ring-cyan-200/30",
-    pillActive: "bg-cyan-300 text-black ring-1 ring-cyan-200/30"
-  };
+const styles = {
+  shell:
+    "bg-black/60 ring-1 ring-emerald-200/15 backdrop-blur " +
+    "shadow-[0_0_0_1px_rgba(34,211,238,0.12),0_0_0_1px_rgba(52,211,153,0.10)]",
+
+  pillBase:
+    "bg-white/5 text-white ring-1 ring-white/10",
+
+  pillHover:
+    "hover:bg-gradient-to-r hover:from-cyan-300 hover:to-emerald-300 " +
+    "hover:text-black hover:ring-emerald-200/40",
+
+  pillActive:
+    "bg-gradient-to-r from-cyan-300 to-emerald-300 text-black ring-1 ring-emerald-200/40",
+};
 
   const readingMatch = useMemo(() => {
     const m = location.pathname.match(/^\/([^/]+)\/([^/]+)\/?$/);
@@ -92,8 +101,8 @@ export default function ForestLayout() {
       </div>
 
       <header className="relative">
-        <div className="h-16 sm:h-20" aria-hidden="true" />
-        <div className="absolute left-0 right-0 top-4 z-50">
+        {/* <div className="h-16 sm:h-20" aria-hidden="true" /> */}
+        <div className="relative z-50 pt-4">
           <nav className="flex w-full items-center justify-between px-4 sm:px-8">
             <div className="flex items-center gap-4">
               <Link
@@ -192,42 +201,38 @@ export default function ForestLayout() {
             </button>
           </nav>
 
-          <div
-            className={cx(
-              "md:hidden mx-auto mt-3 max-w-6xl px-4 sm:px-6",
-              "transition",
-              mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
-            )}
-          >
-            <div
-              className={cx(
-                "rounded-3xl p-2",
-                "bg-black/70 ring-1 ring-white/10 backdrop-blur",
-                "shadow-[0_16px_60px_rgba(0,0,0,0.55)]"
-              )}
+          {mobileOpen ? (
+  <div className="md:hidden mx-auto mt-3 max-w-6xl px-4 sm:px-6">
+    <div
+      className={cx(
+        "rounded-3xl p-2",
+        "bg-black/70 ring-1 ring-white/10 backdrop-blur",
+        "shadow-[0_16px_60px_rgba(0,0,0,0.55)]"
+      )}
+    >
+      <ul className="flex flex-col gap-2">
+        {items.map((item) => (
+          <li key={`m-${item.to}`}>
+            <NavLink
+              to={item.to}
+              end={item.end}
+              className={({ isActive }) =>
+                cx(
+                  "block rounded-2xl px-4 py-3",
+                  "text-sm font-bold uppercase tracking-[0.10em]",
+                  "transition",
+                  isActive ? styles.pillActive : cx(styles.pillBase, styles.pillHover)
+                )
+              }
             >
-              <ul className="flex flex-col gap-2">
-                {items.map((item) => (
-                  <li key={`m-${item.to}`}>
-                    <NavLink
-                      to={item.to}
-                      end={item.end}
-                      className={({ isActive }) =>
-                        cx(
-                          "block rounded-2xl px-4 py-3",
-                          "text-sm font-bold uppercase tracking-[0.10em]",
-                          "transition",
-                          isActive ? styles.pillActive : cx(styles.pillBase, styles.pillHover)
-                        )
-                      }
-                    >
-                      {item.label}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+              {item.label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+) : null}
         </div>
       </header>
 
@@ -236,7 +241,7 @@ export default function ForestLayout() {
           <Outlet />
         </main>
       </div>
-
+<CatalogueFab to="/catalogue" />
       <Footer />
     </div>
   );

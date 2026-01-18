@@ -38,7 +38,7 @@ export function SectionGrid({
                 aria-level={2}
               >
                 <div className="flex-1 mr-4 min-w-0">
-                  <h2 className="text-sm sm:text-2xl font-semibold tracking-tight text-white">
+                  <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-white">
                     {section.title}
                   </h2>
                   {section.subtitle ? (

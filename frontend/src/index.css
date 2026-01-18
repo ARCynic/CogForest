@@ -30,7 +30,30 @@ body {
 .animate-pulse-slow {
   animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+@keyframes attn-zoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
 
+.attn-pulse {
+  display: inline-block;      /* needed for transform */
+  transform-origin: center;
+  animation: attn-zoom 1.1s ease-in-out infinite;
+}
+@keyframes floatPulse {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(-2px) scale(1.06); opacity: 0.95; }
+}
+.pulse-float {
+  animation: floatPulse 1.35s ease-in-out infinite;
+}
+/* optional: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .attn-pulse { animation: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .attn-pulse { animation: none; }
+}
 ::selection {
   background: rgba(34, 211, 238, 0.25);
 }

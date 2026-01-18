@@ -99,7 +99,8 @@ export default function ForestCardLite2({
               "transition"
             )}
           >
-            {ctaLabel} <span className="text-white/60">⁉️</span>
+            {ctaLabel}{" "}
+<span className="attn-pulse text-white/70" aria-hidden="true">👀</span>
           </Link>
         </div>
       ) : null}
@@ -113,11 +114,11 @@ export default function ForestCardLite2({
         <img
           src={stampSrc}
           alt={stampAlt || `${title} stamp`}
-          className={cx(
-            "relative z-[1] h-full w-full object-contain",
-            "opacity-90",
-            "transition-transform duration-200 ease-out group-hover:scale-[1.02]"
-          )}
+className={cx(
+  "relative z-[1] w-full object-contain opacity-90",
+  "h-70 sm:h-48 md:h-full",         // ✅ clamp height on mobile/tablet
+  "transition-transform duration-200 ease-out group-hover:scale-[1.02]"
+)}
           draggable="false"
         />
       ) : (

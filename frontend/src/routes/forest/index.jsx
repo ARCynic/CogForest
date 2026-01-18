@@ -13,17 +13,7 @@ import stampMusic from "../../assets/stamp_music.png";
 import stampFragments from "../../assets/stamp_fragments.png";
 
 const regions = [
-  {
-    key: "fables",
-    to: "/fables",
-    emoji: "🦊",
-    title: "Fables for Kids",
-    description:
-      "Simple stories with clear scenes and quiet lessons.",
-    stamp: stampFables,
-    accent: "#00e5ff"
-  },
-  {
+    {
     key: "satire",
     to: "/satire",
     emoji: "☠️",
@@ -32,6 +22,17 @@ const regions = [
       "Short scenes that expose incentives, status, and institutional nonsense.",
     stamp: stampSatire,
     accent: "#ff3bd4"
+  },
+
+  {
+    key: "fragments",
+    to: "/fragments",
+    emoji: "🪶",
+    title: "Philosophical Fragments",
+    description:
+      "Short reflections on choice, control, responsibility, and meaning.",
+    stamp: stampFragments,
+    accent: "#a3a3a3"
   },
   {
     key: "language",
@@ -44,6 +45,16 @@ const regions = [
     accent: "#2dd4bf"
   },
   {
+    key: "fables",
+    to: "/fables",
+    emoji: "🦊",
+    title: "Fables for Kids",
+    description:
+      "Simple stories with clear scenes and quiet lessons.",
+    stamp: stampFables,
+    accent: "#00e5ff"
+  },
+    {
     key: "music-regulation",
     to: "/music-as-regulation",
     emoji: "🎛️",
@@ -53,16 +64,7 @@ const regions = [
     stamp: stampMusic,
     accent: "#8b5cf6"
   },
-  {
-    key: "fragments",
-    to: "/fragments",
-    emoji: "🪶",
-    title: "Philosophical Fragments",
-    description:
-      "Short reflections on choice, control, responsibility, and meaning.",
-    stamp: stampFragments,
-    accent: "#a3a3a3"
-  }
+
 ];
 
 export default function ForestIndex() {
@@ -93,14 +95,23 @@ export default function ForestIndex() {
 
       {/* Header */}
       <header className="mx-auto max-w-5xl px-2 sm:px-0">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Cognitive Forest
-          </h1>
-          <p className="max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
-            Short writings and small tools about attention, bias, meaning, and modern life.
-          </p>
-        </div>
+        <div
+  className={[
+    "inline-block rounded-3xl p-5 sm:p-6",
+    "bg-black/45 backdrop-blur-md",
+    "ring-1 ring-white/10",
+    "transition",
+    "hover:ring-emerald-200/30",
+    "hover:shadow-[0_0_0_1px_rgba(52,211,153,0.18),0_18px_60px_rgba(16,185,129,0.10)]",
+  ].join(" ")}
+>
+  <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+    Cognitive Forest
+  </h1>
+  <p className="mt-2 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
+    Short writings and small tools about attention, bias, meaning, and modern life.
+  </p>
+</div>
       </header>
 
       {/* Sticky stack (Approach B) */}

@@ -10,7 +10,7 @@ import SatireIndex from "./routes/forest/satire/index.jsx";
 import LanguageIndex from "./routes/forest/language/index.jsx";
 import MusicAsRegulationIndex from "./routes/forest/music-as-regulation/index.jsx";
 import FragmentsIndex from "./routes/forest/fragments/index.jsx";
-
+import Catalogue from "./routes/Catalogue.jsx";
 export default function App() {
   return (
     <Routes>
@@ -30,6 +30,7 @@ export default function App() {
 
         {/* Reading route: changed from /forest/:section/:slug to /:section/:slug */}
         <Route path=":section/:slug" element={<ForestEntry />} />
+        <Route path="/catalogue" element={<Catalogue />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
