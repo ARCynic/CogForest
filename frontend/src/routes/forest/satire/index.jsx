@@ -143,7 +143,7 @@ export default function SatireIndex() {
   );
 }
 
-function Header({ emoji, title, desc, src={stamp} }) {
+function Header({ emoji, title, desc}) {
   return (
     <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
       <div className="min-w-0 space-y-2">
