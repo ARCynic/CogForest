@@ -12,11 +12,6 @@ export const FOREST_VISUALS = {
     },
     writingBgs: [
       "/forest/writing-bg/fables/0.png",
-      "/forest/writing-bg/fables/1.png",
-      "/forest/writing-bg/fables/2.png",
-      "/forest/writing-bg/fables/3.png",
-      "/forest/writing-bg/fables/4.png",
-      "/forest/writing-bg/fables/5.png",
  
     ],
   },

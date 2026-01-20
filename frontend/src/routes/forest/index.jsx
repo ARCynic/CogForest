@@ -11,7 +11,10 @@ import stampSatire from "../../assets/stamp_satire.png";
 import stampLanguage from "../../assets/stamp_language.png";
 import stampMusic from "../../assets/stamp_music.png";
 import stampFragments from "../../assets/stamp_fragments.png";
-
+import BlurText from "../../components/forest/BlurText.jsx";
+// const handleAnimationComplete = () => {
+//   console.log('Animation completed!');
+// };
 const regions = [
     {
     key: "satire",
@@ -94,24 +97,40 @@ export default function ForestIndex() {
       </div>
 
       {/* Header */}
-      <header className="mx-auto max-w-5xl px-2 sm:px-0">
-        <div
-  className={[
-    "inline-block rounded-3xl p-5 sm:p-6",
-    "bg-black/45 backdrop-blur-md",
-    "ring-1 ring-white/10",
-    "transition",
-    "hover:ring-emerald-200/30",
-    "hover:shadow-[0_0_0_1px_rgba(52,211,153,0.18),0_18px_60px_rgba(16,185,129,0.10)]",
-  ].join(" ")}
->
-  <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-    Cognitive Forest
-  </h1>
-  <p className="mt-2 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
-    Short writings and small tools about attention, bias, meaning, and modern life.
-  </p>
-</div>
+            <header className="mx-auto max-w-5xl px-2 sm:px-0">
+        <div className="flex justify-center">
+          <div
+            className={[
+              "inline-block rounded-3xl p-5 sm:p-6",
+              "bg-black/45 backdrop-blur-md",
+              "ring-1 ring-white/10",
+              "transition",
+              "hover:ring-emerald-200/30",
+              "hover:shadow-[0_0_0_1px_rgba(52,211,153,0.18),0_18px_60px_rgba(16,185,129,0.10)]",
+              "text-center", // center text inside box
+              "min-w-[min(520px,100%)]", // keeps it nicely sized but responsive
+            ].join(" ")}
+          >
+            <div className="flex justify-center">
+            <BlurText
+              text="Welcome to CogForest"
+              delay={120}
+              animateBy="words"
+              direction="top"
+              // onAnimationComplete={handleAnimationComplete}
+              className="text-2xl font-semibold tracking-tight text-white"
+            />
+            </div>
+
+            <BlurText
+              text="A collection of ARCynic’s observations, thoughts, and short fragments on cognition, learning, regulation, and system-building. Some are satirical, some philosophical, and some look at practical ways to learn music and languages. Interpretation is left to the reader. Scroll down to explore the sections."
+              delay={160}
+              animateBy="words"
+              direction="top"
+              className="mt-2 text-sm justify-center sm:text-base text-white/70"
+            />
+          </div>
+        </div>
       </header>
 
       {/* Sticky stack (Approach B) */}
@@ -133,25 +152,28 @@ export default function ForestIndex() {
       {/* About / disclaimer */}
       <section className="mx-auto mt-14 max-w-5xl px-2 sm:px-0">
         <div className="rounded-3xl bg-black/60 ring-1 ring-white/10 p-6 sm:p-8">
-          <h2 className="text-lg font-semibold tracking-tight text-white">
-            About the Cognitive Forest
+          <h2 className="text-lg font-semibold tracking-tight text-white text-center">
+          Important Disclaimer!
           </h2>
 
-          <p className="mt-3 text-sm leading-relaxed text-white/70">
-            These writings come from long observation of human systems—how people learn, adapt,
-            cooperate, lie, heal, and leave. Some pieces are playful; some are sharp; some are
-            unfinished by design. Characters and events are fictional and are not intended to depict
-            any real person. If a reader finds similarities, that’s a mirror—not a claim.
+          <p className="mt-3 text-sm leading-relaxed text-white/70 text-center">
+          Characters and events in this site are fictional and are not intended to depict any real person. If a reader finds similarities, that reflects the reader’s interpretation, not a claim of identity.
           </p>
 
-          <p className="mt-4 text-sm leading-relaxed text-white/70">
-            Unless stated otherwise, this work is not offered for unsolicited commercial reuse or
-            replication. If you want to reference, translate, adapt, or collaborate, contact me and
-            we’ll do it properly.
+          <p className="mt-4 text-sm leading-relaxed text-white/70 text-center">
+            Unless stated otherwise, this work is not available for unsolicited commercial reuse, reproduction, or redistribution.
+            If you wish to reference, translate, adapt, or collaborate, please{" "}
+            <a
+              href="/contact"
+              className="text-cyan-300 hover:text-emerald-200 underline decoration-white/20 underline-offset-4 transition"
+            >
+              reach out via the contact form
+            </a>{" "}
+            first so we can arrange it appropriately.
           </p>
         </div>
 
-        <div className="h-16" />
+        <div className="h-3" />
       </section>
 
 

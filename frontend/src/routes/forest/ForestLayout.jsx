@@ -133,12 +133,12 @@ const styles = {
                   Cognitive Forest
                 </span>
                 <span className="mt-2 text-[11px] uppercase tracking-[0.22em] text-cyan-300/75">
-                  writings · fragments · satire
+                  Thoughts · Fragments 
                 </span>
               </div>
             </div>
 
-            <div className="hidden md:flex items-center">
+            <div className="hidden lg:flex items-center">
               <div className={cx("flex items-center rounded-full p-1", styles.shell)}>
                 <ul className="flex items-stretch gap-1">
                   {items.map((item) => (
@@ -174,35 +174,47 @@ const styles = {
             </div>
 
             <button
-              className={cx(
-                "md:hidden inline-flex items-center justify-center",
-                "h-16 w-16 rounded-2xl",
-                styles.shell,
-                "transition hover:bg-black/70 hover:ring-white/20"
-              )}
-              onClick={() => setMobileOpen((v) => !v)}
-              aria-label="Toggle menu"
-              aria-expanded={mobileOpen}
-            >
-              <div className="flex flex-col gap-[6px]">
-                <span
-                  className="h-[2px] w-6 rounded bg-white transition"
-                  style={mobileOpen ? { transform: "translateY(8px) rotate(45deg)" } : undefined}
-                />
-                <span
-                  className="h-[2px] w-6 rounded bg-white transition"
-                  style={mobileOpen ? { opacity: 0 } : undefined}
-                />
-                <span
-                  className="h-[2px] w-6 rounded bg-white transition"
-                  style={mobileOpen ? { transform: "translateY(-8px) rotate(-45deg)" } : undefined}
-                />
-              </div>
-            </button>
+                className={cx(
+                  "lg:hidden inline-flex items-center justify-center",
+                  "p-2",                 // no fixed box
+                  "bg-transparent ring-0 shadow-none", // remove shell box
+                  "transition"
+                )}
+                onClick={() => setMobileOpen((v) => !v)}
+                aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
+              >
+                <div className="flex flex-col gap-[7px]">
+                  <span
+                    className={cx(
+                      "h-[3px] w-8 rounded-full transition", // thicker + wider
+                      "bg-emerald-200/95",
+                      "shadow-[0_0_10px_rgba(52,211,153,0.50),0_0_22px_rgba(34,211,238,0.18)]"
+                    )}
+                    style={mobileOpen ? { transform: "translateY(10px) rotate(45deg)" } : undefined}
+                  />
+                  <span
+                    className={cx(
+                      "h-[3px] w-8 rounded-full transition",
+                      "bg-emerald-200/95",
+                      "shadow-[0_0_10px_rgba(52,211,153,0.50),0_0_22px_rgba(34,211,238,0.18)]"
+                    )}
+                    style={mobileOpen ? { opacity: 0 } : undefined}
+                  />
+                  <span
+                    className={cx(
+                      "h-[3px] w-8 rounded-full transition",
+                      "bg-emerald-200/95",
+                      "shadow-[0_0_10px_rgba(52,211,153,0.50),0_0_22px_rgba(34,211,238,0.18)]"
+                    )}
+                    style={mobileOpen ? { transform: "translateY(-10px) rotate(-45deg)" } : undefined}
+                  />
+                </div>
+              </button>
           </nav>
 
           {mobileOpen ? (
-  <div className="md:hidden mx-auto mt-3 max-w-6xl px-4 sm:px-6">
+  <div className="lg:hidden mx-auto mt-3 max-w-6xl px-4 sm:px-6">
     <div
       className={cx(
         "rounded-3xl p-2",

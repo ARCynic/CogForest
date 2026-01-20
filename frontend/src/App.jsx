@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import ForestLayout from "./routes/forest/ForestLayout.jsx";
 import ForestIndex from "./routes/forest/index.jsx";
 import ForestEntry from "./routes/forest/Writing.jsx";
-
+import Contact from "./routes/forest/Contact.jsx";
 import FablesIndex from "./routes/forest/fables/index.jsx";
 import SatireIndex from "./routes/forest/satire/index.jsx";
 import LanguageIndex from "./routes/forest/language/index.jsx";
@@ -22,12 +22,12 @@ export default function App() {
         <Route index element={<ForestIndex />} />
 
         {/* Sections */}
-        <Route path="fables" element={<FablesIndex />} />
-        <Route path="satire" element={<SatireIndex />} />
-        <Route path="language" element={<LanguageIndex />} />
-        <Route path="music-as-regulation" element={<MusicAsRegulationIndex />} />
-        <Route path="fragments" element={<FragmentsIndex />} />
-
+        <Route path="/fables" element={<FablesIndex />} />
+        <Route path="/satire" element={<SatireIndex />} />
+        <Route path="/language" element={<LanguageIndex />} />
+        <Route path="/music-as-regulation" element={<MusicAsRegulationIndex />} />
+        <Route path="/fragments" element={<FragmentsIndex />} />
+        <Route path="/contact" element={<Contact />} />
         {/* Reading route: changed from /forest/:section/:slug to /:section/:slug */}
         <Route path=":section/:slug" element={<ForestEntry />} />
         <Route path="/catalogue" element={<Catalogue />} />

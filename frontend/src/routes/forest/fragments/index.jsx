@@ -42,28 +42,30 @@ export default function FragmentsIndex() {
       seriesMap.get(key).push(e);
     }
 
-    const seriesSections = [...seriesMap.entries()].map(([seriesKey, data]) => {
-      const sorted = [...data].sort((a, b) => (a.order ?? 9999) - (b.order ?? 9999));
-      const title = sorted[0]?.seriesTitle || seriesKey;
-      const meta = getCategoryMeta(sorted);
+              const seriesSections = [...seriesMap.entries()].map(([seriesKey, data]) => {
+        const sorted = [...data].sort((a, b) => (a.order ?? 9999) - (b.order ?? 9999));
+        const seriesTitle = sorted[0]?.seriesTitle || seriesKey;
+        const meta = getCategoryMeta(sorted);
 
+        const episodesLabel = `${sorted.length} ${sorted.length === 1 ? "episode" : "episodes"}`;
+
+        // ✅ Title line becomes: "(emoji) Series: Catacomb — 6 episodes"
         const headerTitle = meta.emoji
-          ? `${meta.emoji} Series — ${title}`
-          : `Series — ${title}`;
+          ? `${meta.emoji} Series: ${seriesTitle} — ${episodesLabel}`
+          : `Series: ${seriesTitle} — ${episodesLabel}`;
 
-        const parts = [];
-        if (meta.summary) parts.push(meta.summary);
-        if (meta.time) parts.push(`⏱ ${meta.time}`);
-        parts.push(`${sorted.length} ${sorted.length === 1 ? "part" : "parts"}`);
+        // ✅ Keep subtitle for summary/time only (no more "6 parts" here)
+        const subtitleParts = [];
+        if (meta.summary) subtitleParts.push(meta.summary);
+        if (meta.time) subtitleParts.push(`⏱ ${meta.time}`);
 
-      return {
-        id: `series-${slugify(seriesKey)}`,
-        title: headerTitle,
-        subtitle: parts.join("."),
-        
-        data: sorted
-      };
-    });
+        return {
+          id: `series-${slugify(seriesKey)}`,
+          title: headerTitle,
+          subtitle: subtitleParts.join(" · "),
+          data: sorted
+        };
+      });
 
     const singlesMap = new Map();
     for (const e of singles) {
@@ -81,7 +83,7 @@ export default function FragmentsIndex() {
       const parts = [];
       if (meta.summary) parts.push(meta.summary);
       if (meta.time) parts.push(`⏱ ${meta.time}`);
-      parts.push(`${count} ${count === 1 ? "writing" : "writings"}`);
+      parts.push(`${count} ${count === 1 ? "Writing" : "Writings"}`);
 
       return {
         id: `singles-${slugify(title)}`,
