@@ -93,13 +93,14 @@ export default function ForestCardLite({
             className={cx(
               "inline-flex items-center gap-2 rounded-xl",
               "bg-white/5 px-4 py-2",
-              "ring-1 ring-white/10",
+              "ring-4 ring-white/10",
               "text-normal font-semibold text-white/85",
               "hover:bg-white/8 hover:text-white hover:ring-white/15",
               "transition"
             )}
           >
-            {ctaLabel} <span className="text-white/60"></span>
+             {ctaLabel}{" "}
+<span className="attn-pulse text-white/70" aria-hidden="true">📖</span>
           </Link>
         </div>
       ) : null}
@@ -115,7 +116,7 @@ export default function ForestCardLite({
           alt={stampAlt || `${title} stamp`}
 className={cx(
   "relative z-[1] w-full object-contain opacity-90",
-  "h-70 sm:h-48 md:h-full",         // ✅ clamp height on mobile/tablet
+  "h-50 sm:h-48 md:h-full",         // ✅ clamp height on mobile/tablet
   "transition-transform duration-200 ease-out group-hover:scale-[1.02]"
 )}
           draggable="false"

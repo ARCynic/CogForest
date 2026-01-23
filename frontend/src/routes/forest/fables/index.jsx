@@ -144,7 +144,7 @@ export default function FablesIndex() {
         />
       </div>
 
-      <div className="h-16" />
+      <div className="h-5" />
     </div>
   );
 }

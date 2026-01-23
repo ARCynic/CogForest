@@ -132,8 +132,8 @@ const styles = {
                 <span className="text-3xl font-semibold tracking-tight text-white leading-none">
                   Cognitive Forest
                 </span>
-                <span className="mt-2 text-[11px] uppercase tracking-[0.22em] text-cyan-300/75">
-                  Thoughts · Fragments 
+                <span className="mt-2 text-[8px] uppercase tracking-[0.22em] text-cyan-300/75">
+                  Observations ☘︎ Fragments ☘︎ Thoughts
                 </span>
               </div>
             </div>

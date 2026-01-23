@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import BlurText from "../../components/forest/BlurText.jsx";
 
 const cx = (...c) => c.filter(Boolean).join(" ");
@@ -9,13 +9,8 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
 
-  // Turn this on later when your backend is ready.
-  // When true + VITE_API_BASE is set, submission will work immediately.
-  const SUBMISSIONS_ENABLED = false;
-
-  // Set this later:
   // VITE_API_BASE=https://api.mydomain.tld
-  const API_BASE = import.meta.env.VITE_API_BASE || "https://api.mydomain.tld";
+  const API_BASE = import.meta.env.VITE_API_BASE || "https://echo.polymathictrail.space";
   const CONTACT_ENDPOINT = `${API_BASE.replace(/\/$/, "")}/contact`;
 
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
@@ -23,21 +18,8 @@ export default function Contact() {
 
   const tooShort = msg.trim().length > 0 && msg.trim().length < 10;
 
-  const mailtoHref = useMemo(() => {
-    const subject = encodeURIComponent(`[Cognitive Forest] ${topic}`);
-    const body = encodeURIComponent(
-      `Topic: ${topic}\nName: ${name || "(not provided)"}\nEmail: ${
-        email || "(not provided)"
-      }\n\nMessage:\n${msg || "(empty)"}\n`
-    );
-    return `mailto:contact@polymathictrail.org?subject=${subject}&body=${body}`;
-  }, [topic, name, email, msg]);
-
   async function handleSubmit(e) {
     e.preventDefault();
-
-    // Keep submissions OFF for now (as requested)
-    if (!SUBMISSIONS_ENABLED) return;
 
     setStatus("submitting");
     setErrorMsg("");
@@ -46,7 +28,7 @@ export default function Contact() {
       const payload = {
         email: email || "",
         name: name || "",
-        subject: topic, // (collab/feedback/question/etc)
+        subject: topic, // topic stored as subject in backend
         message: msg || "",
       };
 
@@ -69,51 +51,53 @@ export default function Contact() {
   }
 
   if (status === "success") {
-    return (
-      <div className="mx-auto w-full max-w-5xl px-2 sm:px-0">
-        <section className="mt-2">
-          <div
-            className={cx(
-              "rounded-3xl p-6 sm:p-8",
-              "bg-black/45 backdrop-blur-md ring-1 ring-white/10",
-              "transition",
-              "hover:ring-emerald-200/30",
-              "hover:shadow-[0_0_0_1px_rgba(52,211,153,0.18),0_18px_60px_rgba(16,185,129,0.10)]",
-              "text-center"
-            )}
-          >
-            <BlurText
-              text="Message received"
-              delay={120}
-              animateBy="words"
-              direction="top"
-              className="text-2xl font-semibold tracking-tight text-white"
-            />
-            <p className="mt-3 text-sm sm:text-base leading-relaxed text-white/70">
-              Thanks — I’ll read it soon.
-            </p>
-
-            <div className="mt-5 flex justify-center">
-              <a
-                href="/"
-                className={cx(
-                  "inline-flex items-center justify-center rounded-xl px-5 py-3",
-                  "text-sm font-bold uppercase tracking-[0.10em]",
-                  "bg-gradient-to-r from-cyan-300 to-emerald-300 text-black",
-                  "ring-1 ring-emerald-200/40",
-                  "transition hover:brightness-110"
-                )}
-              >
-                Back to home
-              </a>
-            </div>
+  return (
+    <div className="mx-auto w-full max-w-5xl px-2 sm:px-0 min-h-[calc(100svh-17rem)] flex items-center">
+      <section className="w-full">
+        <div
+          className={cx(
+            "rounded-3xl p-6 sm:p-8",
+            "bg-black/45 backdrop-blur-md ring-1 ring-white/10",
+            "transition",
+            "hover:ring-emerald-200/30",
+            "hover:shadow-[0_0_0_1px_rgba(52,211,153,0.18),0_18px_60px_rgba(16,185,129,0.10)]",
+            "text-center"
+          )}
+        >
+          <div className="flex justify-center">
+          <BlurText
+            text="Message received!"
+            delay={120}
+            animateBy="words"
+            direction="top"
+            className="text-2xl font-semibold tracking-tight text-white"
+          />
           </div>
-        </section>
+          <p className="mt-3 text-sm sm:text-base leading-relaxed text-white/70">
+            Thanks — I’ll read it soon.
+          </p>
 
-        <div className="h-16" />
-      </div>
-    );
-  }
+          <div className="mt-5 flex justify-center">
+            <a
+              href="/"
+              className={cx(
+                "inline-flex items-center justify-center rounded-xl px-5 py-3",
+                "text-sm font-bold uppercase tracking-[0.10em]",
+                "bg-gradient-to-r from-cyan-300 to-emerald-300 text-black",
+                "ring-1 ring-emerald-200/40",
+                "transition hover:brightness-110"
+              )}
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+ const sendDisabled = status === "submitting" || tooShort || msg.trim().length === 0;
 
   return (
     <div className="mx-auto w-full max-w-5xl px-2 sm:px-0">
@@ -139,8 +123,7 @@ export default function Contact() {
           </div>
 
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-white/70 text-center">
-            Send feedback, questions, collaboration ideas, or a note. Submission will be enabled
-            when the backend is ready.
+          If you’ve got a thought,questions, collaboration ideas, or a note—— send it. Feedback is how people (and projects) get less wrong over time. It can shape what I might do next.
           </p>
         </div>
       </section>
@@ -164,8 +147,7 @@ export default function Contact() {
                   <option>Feedback</option>
                   <option>Question</option>
                   <option>Collaboration</option>
-                  <option>Translation / Adaptation</option>
-                  <option>Other</option>
+                  <option>Note</option>
                 </select>
               </div>
 
@@ -221,34 +203,31 @@ export default function Contact() {
             {/* Actions */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
               <div className="text-xs text-white/45">
-                Submission via form is currently disabled. Please hit "Email instead" to contact for the time being.
-                
+                {/* kept layout, removed mailto instructions */}
               </div>
 
               <div className="flex gap-3">
-                <a
-                  href={mailtoHref}
-                  className={cx(
-                    "inline-flex items-center justify-center rounded-xl px-5 py-3",
-                    "text-sm font-bold uppercase tracking-[0.10em]",
-                    "bg-white/5 text-white ring-1 ring-white/10",
-                    "transition hover:bg-white/10"
-                  )}
-                >
-                  Email instead
-                </a>
-
                 <button
                   type="submit"
-                  disabled
+                  disabled={sendDisabled}
                   className={cx(
                     "inline-flex items-center justify-center rounded-xl px-5 py-3",
                     "text-sm font-bold uppercase tracking-[0.10em]",
                     "bg-gradient-to-r from-cyan-300 to-emerald-300 text-black",
                     "ring-1 ring-emerald-200/40",
-                    "opacity-60 cursor-not-allowed"
+                    "transition",
+                    // Hover behavior changed here:
+                    // - instead of brightness tweak, use subtle lift + stronger ring/shadow
+                    !sendDisabled && "hover:-translate-y-[1px] hover:shadow-[0_0_0_1px_rgba(52,211,153,0.18),0_18px_60px_rgba(16,185,129,0.16)] hover:ring-emerald-200/60",
+                    sendDisabled && "opacity-60 cursor-not-allowed"
                   )}
-                  title="Backend not wired yet"
+                  title={
+                        status === "submitting"
+                          ? "Sending…"
+                          : (msg.trim().length === 0 || tooShort)
+                            ? "Message must be at least 10 characters."
+                            : "Send"
+                      }
                 >
                   {status === "submitting" ? "Sending…" : "Send"}
                 </button>

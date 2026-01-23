@@ -123,7 +123,7 @@ export default function ForestIndex() {
             </div>
 
             <BlurText
-              text="A collection of ARCynic’s observations, thoughts, and short fragments on cognition, learning, regulation, and system-building. Some are satirical, some philosophical, and some look at practical ways to learn music and languages. Interpretation is left to the reader. Scroll down to explore the sections."
+              text="A curated collection by ARCynic: philosophical lenses, short observations, satire, and fragments on cognition, learning, and modern life. Scroll down to explore the sections."
               delay={160}
               animateBy="words"
               direction="top"
@@ -157,19 +157,19 @@ export default function ForestIndex() {
           </h2>
 
           <p className="mt-3 text-sm leading-relaxed text-white/70 text-center">
-          Characters and events in this site are fictional and are not intended to depict any real person. If a reader finds similarities, that reflects the reader’s interpretation, not a claim of identity.
+          Characters, images and events in this site are fictional and do not depict any real person. If any reader finds similarities, that reflects the reader’s interpretation, not a claim of identity.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-white/70 text-center">
             Unless stated otherwise, this work is not available for unsolicited commercial reuse, reproduction, or redistribution.
-            If you wish to reference, translate, adapt, or collaborate, please{" "}
+            If you wish to reference, adapt, or collaborate, reach out via the{" "}
             <a
               href="/contact"
               className="text-cyan-300 hover:text-emerald-200 underline decoration-white/20 underline-offset-4 transition"
             >
-              reach out via the contact form
+              Contact Form
             </a>{" "}
-            first so we can arrange it appropriately.
+            .
           </p>
         </div>
 

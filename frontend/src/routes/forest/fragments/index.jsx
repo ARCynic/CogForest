@@ -135,7 +135,7 @@ export default function FragmentsIndex() {
         />
       </div>
 
-      <div className="h-16" />
+      <div className="h-5" />
     </div>
   );
 }

@@ -9,7 +9,15 @@ export default function Footer() {
         <div className="flex items-center justify-between gap-6">
           {/* Left */}
           <p className="text-sm text-white/60 whitespace-nowrap">
-            © {year} <span className="text-white/80">Polymathic Trail</span>. 
+            © {year}{" "}
+            <a
+              href="https://polymathictrail.space"
+              className="text-cyan-300 hover:text-emerald-200 hover:underline underline-offset-4"
+              rel="noreferrer"
+            >
+              Polymathic Trail
+            </a>
+            .
             <span className="hidden sm:inline"> All rights reserved.</span>
           </p>
 
@@ -31,7 +39,7 @@ export default function Footer() {
 
   {/* Twitter / X */}
   <SocialIcon
-    href="#"
+    href="https://x.com/Cynically_Stoic"
     label="Twitter"
     icon={
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
@@ -41,7 +49,7 @@ export default function Footer() {
   />
 
   {/* Facebook */}
-  <SocialIcon
+  {/* <SocialIcon
     href="#"
     label="Facebook"
     icon={
@@ -49,7 +57,7 @@ export default function Footer() {
         <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.5 1.5-1.5H16.7V4.6c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V10.9H6.7V14h2.8v8h4z" />
       </svg>
     }
-  />
+  /> */}
 
   {/* YouTube
   <SocialIcon
@@ -64,7 +72,7 @@ export default function Footer() {
 
   {/* Instagram */}
   <SocialIcon
-    href="#"
+    href="https://www.instagram.com/arcynic_/"
     label="Instagram"
     icon={
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
